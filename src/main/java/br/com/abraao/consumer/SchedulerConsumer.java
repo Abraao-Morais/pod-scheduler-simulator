@@ -22,6 +22,7 @@ public class SchedulerConsumer implements Runnable{
                 if (STOP_CONDITION.equalsIgnoreCase(pod.getName()))
                     break;
 
+                System.out.println("[CONSUMER] Takes " + pod.getName());
                 master.schedule(pod);
             }
         } catch (InterruptedException e) {

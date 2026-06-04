@@ -1,13 +1,11 @@
 package br.com.abraao.domain;
 
 import lombok.Getter;
-import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@ToString
 public class Worker {
 
     private String name;

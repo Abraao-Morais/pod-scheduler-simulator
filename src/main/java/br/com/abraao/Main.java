@@ -26,6 +26,7 @@ public class Main {
         BlockingQueue<Pod> queue = new LinkedBlockingQueue<>();
         List<Pod> notAllocated = new ArrayList<>();
         MultiMetricScheduler scheduler = new MultiMetricScheduler();
+
         Master master = new Master(workers, notAllocated, scheduler);
 
         Thread producer = new Thread(new PodProducer(queue));

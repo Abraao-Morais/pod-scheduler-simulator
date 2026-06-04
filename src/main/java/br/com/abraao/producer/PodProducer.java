@@ -17,7 +17,7 @@ public class PodProducer implements Runnable{
                 Pod pod = new Pod("pod-" + i, random(1, 2), random(1, 3), random(1, 2));
 
                 queue.put(pod);
-                System.out.println("[PRODUCER] Created " + pod.getName());
+                System.out.printf("[PRODUCER] Created %s Queue Size: %d\n",pod.getName(), queue.size());
                 Thread.sleep(300);
             }
             queue.put(new Pod("END", 0, 0, 0));
