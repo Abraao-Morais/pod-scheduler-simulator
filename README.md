@@ -21,7 +21,7 @@ The goal is to demonstrate operating systems concepts such as:
 
 The simulation is composed of:
 
-- Master Scheduler
+- Master Node
 - Worker Nodes
 - Pods
 - Producer Thread
@@ -35,6 +35,9 @@ The simulation is composed of:
             |
             v
         Scheduler Consumer
+            |
+            v
+        Master
             |
             v
         MultiMetricScheduler
@@ -64,7 +67,7 @@ Attributes:
 - Available Disk
 - Network Latency
 
-### Scheduler
+### Scheduler (MultiMetricScheduler)
 
 Responsible for selecting the best Worker for each Pod.
 

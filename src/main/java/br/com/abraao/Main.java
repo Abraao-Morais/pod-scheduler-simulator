@@ -1,6 +1,7 @@
 package br.com.abraao;
 
 import br.com.abraao.consumer.SchedulerConsumer;
+import br.com.abraao.cluster.Master;
 import br.com.abraao.domain.Pod;
 import br.com.abraao.domain.Worker;
 import br.com.abraao.producer.PodProducer;
@@ -25,9 +26,10 @@ public class Main {
         BlockingQueue<Pod> queue = new LinkedBlockingQueue<>();
         List<Pod> notAllocated = new ArrayList<>();
         MultiMetricScheduler scheduler = new MultiMetricScheduler();
+        Master master = new Master(workers, notAllocated, scheduler);
 
         Thread producer = new Thread(new PodProducer(queue));
-        Thread consumer = new Thread(new SchedulerConsumer(queue, workers, notAllocated, scheduler));
+        Thread consumer = new Thread(new SchedulerConsumer(queue, master));
 
         producer.start();
         consumer.start();
