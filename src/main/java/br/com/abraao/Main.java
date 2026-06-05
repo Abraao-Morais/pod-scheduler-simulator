@@ -18,9 +18,9 @@ import static br.com.abraao.util.StatisticsPrinter.printWorkers;
 public class Main {
     public static void main(String[] args) throws Exception{
         List<Worker> workers = List.of(
-                new Worker("worker-1",8,16,100,10),
-                new Worker("worker-2",8,16,100,10),
-                new Worker("worker-3",8,16,100,10)
+                new Worker("worker-1",10,16,100,10),
+                new Worker("worker-2",18,16,400,10),
+                new Worker("worker-3",10,16,100,20)
         );
 
         BlockingQueue<Pod> queue = new LinkedBlockingQueue<>();

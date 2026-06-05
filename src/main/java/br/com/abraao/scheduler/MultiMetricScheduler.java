@@ -5,19 +5,21 @@ import br.com.abraao.domain.Worker;
 
 import java.util.List;
 
+import static java.util.Objects.isNull;
+
 public class MultiMetricScheduler {
 
     public Worker selectWorker(Pod pod, List<Worker> workers) {
         Worker bestWorker = null;
-        double bestScore = -1;
+        Double bestScore = null;
 
         for (Worker worker : workers) {
             if (!canFit(pod, worker))
                 continue;
 
-            double score = calculateScore(pod, worker);
+            double score = calculateScore(worker);
 
-            if (score > bestScore) {
+            if (isNull(bestScore) || score > bestScore) {
                 bestScore = score;
                 bestWorker = worker;
             }
@@ -32,7 +34,7 @@ public class MultiMetricScheduler {
                 && worker.getAvailableDisk() >= pod.getDiskRequired();
     }
 
-    private double calculateScore(Pod pod, Worker worker) {
+    private double calculateScore(Worker worker) {
         double cpuScore = worker.getAvailableCpu() * 1.0;
         double memScore = worker.getAvailableMemory() * 1.0;
         double diskScore = worker.getAvailableDisk() * 0.8;
